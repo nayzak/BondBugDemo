@@ -8,53 +8,24 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
-		<key>Diff.xcscheme</key>
+		<key>Differ.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>Pods-BondBugDemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>ReactiveKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>0BA1C9BDB8E7A957517BD42E53EA7221</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2F9C1E4420E4C5518F9AFD18CE7FBB65</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6C9545F4130D42DC9140D3FDEBABA82E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EA86C11D22264BBA17C402F802C39ADE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

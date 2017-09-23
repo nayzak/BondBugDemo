@@ -30,7 +30,7 @@ class ViewController: NSViewController {
     ])
 
     viewModels.bind(to: tableView, animated: true) { titles, row, tableView in
-      let cell = tableView.make(withIdentifier: "CellID", owner: nil) as! NSTableCellView
+        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CellID"), owner: nil) as! NSTableCellView
       cell.textField?.stringValue = titles[row].title
       return cell
     }

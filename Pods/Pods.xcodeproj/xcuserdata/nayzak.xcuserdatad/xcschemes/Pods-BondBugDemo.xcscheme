@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0BA1C9BDB8E7A957517BD42E53EA7221"
+               BlueprintIdentifier = "869701D28D6378E73C1F310AA2769889"
                BuildableName = "Pods_BondBugDemo.framework"
                BlueprintName = "Pods-BondBugDemo"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0BA1C9BDB8E7A957517BD42E53EA7221"
+            BlueprintIdentifier = "869701D28D6378E73C1F310AA2769889"
             BuildableName = "Pods_BondBugDemo.framework"
             BlueprintName = "Pods-BondBugDemo"
             ReferencedContainer = "container:Pods.xcodeproj">

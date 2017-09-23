@@ -24,7 +24,7 @@
 
 import Foundation
 import ReactiveKit
-import Diff
+import Differ
 
 public enum Observable2DArrayChange {
   case reset
@@ -117,10 +117,10 @@ public struct Observable2DArraySection<Metadata, Item>: Collection {
       return items[index]
     }
   }
-  
+
 }
 
-public class Observable2DArray<SectionMetadata, Item>: Collection, SignalProtocol {
+public class Observable2DArray<SectionMetadata, Item>: SignalProtocol {
 
   public fileprivate(set) var sections: [Observable2DArraySection<SectionMetadata, Item>]
   fileprivate let subject = PublishSubject<Observable2DArrayEvent<SectionMetadata, Item>, NoError>()
@@ -140,16 +140,16 @@ public class Observable2DArray<SectionMetadata, Item>: Collection, SignalProtoco
   }
 
   public var startIndex: IndexPath {
-    return IndexPath(item: 0, section: 0)
+    guard sections.count > 0 else { return IndexPath(item: 0, section: 0) }
+    var section = 0
+    while section < sections.count && sections[section].count == 0 {
+      section += 1
+    }
+    return IndexPath(item: 0, section: section)
   }
 
   public var endIndex: IndexPath {
-    if numberOfSections == 0 {
-      return IndexPath(item: 0, section: 0)
-    } else {
-      let lastSection = sections[numberOfSections-1]
-      return IndexPath(item: lastSection.items.count, section: numberOfSections - 1)
-    }
+    return IndexPath(item: 0, section: numberOfSections)
   }
 
   public func index(after i: IndexPath) -> IndexPath {
@@ -158,11 +158,15 @@ public class Observable2DArray<SectionMetadata, Item>: Collection, SignalProtoco
       if i.item + 1 < section.items.count {
         return IndexPath(item: i.item + 1, section: i.section)
       } else {
-        if i.section + 1 < sections.count {
-          return IndexPath(item: 0, section: i.section + 1)
-        } else {
-          return endIndex
+        var section = i.section + 1
+        while section < sections.count {
+          if sections[section].items.count > 0 {
+            return IndexPath(item: 0, section: section)
+          } else {
+            section += 1
+          }
         }
+        return endIndex
       }
     } else {
       return endIndex
@@ -406,7 +410,12 @@ extension Observable2DArrayPatchEvent: DataSourceEventProtocol {
   }
 }
 
-extension Observable2DArray: QueryableDataSourceProtocol {}
+extension Observable2DArray: QueryableDataSourceProtocol {
+
+  public func item(at index: IndexPath) -> Item {
+    return self[index]
+  }
+}
 
 extension MutableObservable2DArray {
 

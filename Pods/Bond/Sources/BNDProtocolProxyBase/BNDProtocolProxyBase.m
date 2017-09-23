@@ -76,7 +76,7 @@
       [self invokeWithSelector:invocation.selector argumentExtractor:^(NSInteger index, void *buffer) {
         [invocation getArgument:buffer atIndex:index];
       } setReturnValue:^(void *buffer) {
-          [invocation setReturnValue:buffer];
+        [invocation setReturnValue:buffer];
       }];
     } else {
       [self invokeWithSelector:invocation.selector argumentExtractor:^(NSInteger index, void *buffer) {

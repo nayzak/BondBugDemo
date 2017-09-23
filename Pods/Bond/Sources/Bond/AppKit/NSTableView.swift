@@ -22,11 +22,11 @@ public extension ReactiveExtensions where Base: NSTableView {
   }
 
   public var selectionIsChanging: SafeSignal<Void> {
-    return NotificationCenter.default.reactive.notification(name: .NSTableViewSelectionIsChanging, object: base).eraseType()
+    return NotificationCenter.default.reactive.notification(name: NSTableView.selectionIsChangingNotification, object: base).eraseType()
   }
 
   public var selectionDidChange: SafeSignal<Void> {
-    return NotificationCenter.default.reactive.notification(name: .NSTableViewSelectionDidChange, object: base).eraseType()
+    return NotificationCenter.default.reactive.notification(name: NSTableView.selectionDidChangeNotification, object: base).eraseType()
   }
 
   public var selectedRowIndexes: Bond<IndexSet> {
@@ -66,8 +66,8 @@ open class DefaultTableViewBond<DataSource: DataSourceProtocol>: TableViewBond {
 	
 	private var updating: Bool = false
 	
-	public var insertAnimation: NSTableViewAnimationOptions? = [.effectFade, .slideUp]
-	public var deleteAnimation: NSTableViewAnimationOptions? = [.effectFade, .slideUp]
+  public var insertAnimation: NSTableView.AnimationOptions? = [.effectFade, .slideUp]
+  public var deleteAnimation: NSTableView.AnimationOptions? = [.effectFade, .slideUp]
 	
 	let measureCell: ((DataSource, Int, NSTableView) -> CGFloat?)?
 	let createCell: ((DataSource, Int, NSTableView) -> NSView?)?
@@ -196,7 +196,7 @@ public extension SignalProtocol where
       property: dataSource,
       to: #selector(NSTableViewDataSource.tableView(_:objectValueFor:row:)),
       map: { (dataSource: DataSource?, _: NSTableView, _: NSTableColumn, row: Int) -> Any? in
-        return dataSource?[row]
+        return dataSource?.item(at: row)
       }
     )
 
